@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CD442BF92DB74A1F00873A93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442BF52DB74A1F00873A93 /* ContentView.swift */; };
+		CD442C042DB74B9200873A93 /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442C032DB74B8D00873A93 /* DisclaimerView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CD96DC962DB31C4800EDCE4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD442BF52DB74A1F00873A93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CD442C032DB74B8D00873A93 /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
 		CD96DC862DB31C4500EDCE4A /* visual-acuity-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "visual-acuity-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96DC952DB31C4800EDCE4A /* visual-acuity-testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "visual-acuity-testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96DC9F2DB31C4800EDCE4A /* visual-acuity-testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "visual-acuity-testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,10 +79,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD442C022DB74B2E00873A93 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD442C032DB74B8D00873A93 /* DisclaimerView.swift */,
+				CD442BF52DB74A1F00873A93 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CD96DC7D2DB31C4500EDCE4A = {
 			isa = PBXGroup;
 			children = (
 				CD96DC882DB31C4500EDCE4A /* visual-acuity-test */,
+				CD442C022DB74B2E00873A93 /* Views */,
 				CD96DC982DB31C4800EDCE4A /* visual-acuity-testTests */,
 				CD96DCA22DB31C4800EDCE4A /* visual-acuity-testUITests */,
 				CD96DC872DB31C4500EDCE4A /* Products */,
@@ -236,6 +253,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD442C042DB74B9200873A93 /* DisclaimerView.swift in Sources */,
+				CD442BF92DB74A1F00873A93 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
