@@ -1,56 +1,90 @@
+
 import SwiftUI
 
 struct DisclaimerView: View {
     var body: some View {
-        VStack {
-            // progress bar
-            ProgressView(value: 0.25)
-                .progressViewStyle(.linear)
-            
+        VStack(spacing: 0) {
+            // MARK: Content
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    
+                VStack(alignment: .leading, spacing: 16) {
+                    // Headline
                     Text("Please read and accept before continuing.")
-                        .font(.headline)
-                        .foregroundColor(.blue)
-                    
+                        .font(.title3.weight(.semibold))
+                        .foregroundColor(Color("BrandBlue"))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, 16)
+
+                    // Medical Disclaimer section
                     Text("Medical Disclaimer")
-                        .fontWeight(.semibold)
+                        .font(.headline.weight(.semibold))
+                        .padding(.top, 8)
+
                     Text("""
-                    This test is a screening tool and not a replacement for a comprehensive eye exam. Please continue regular check‑ups with a licensed eye care professional.
+                    This test is a screening tool and not a replacement for a comprehensive eye exam. Please continue regular check-ups with a licensed eye care professional.
                     """)
+                        .font(.body)
                         .foregroundColor(.secondary)
-                    
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    // Agreement section
                     Text("Agreement")
-                        .fontWeight(.semibold)
-                    Text("By tapping “I Agree,” you confirm that you accept our ")
-                        + Text("Terms of Use").underline()
+                        .font(.headline.weight(.semibold))
+                        .padding(.top, 8)
+
+                    (
+                        Text("By tapping “I Agree,” you confirm that you accept our ")
+                        + Text("Terms of Use").underline().foregroundColor(Color("BrandBlue"))
                         + Text(", ")
-                        + Text("Privacy Policy").underline()
+                        + Text("Privacy Policy").underline().foregroundColor(Color("BrandBlue"))
                         + Text(", ")
-                        + Text("Service Agreement").underline()
-                        + Text(", ")
-                        + Text("Notice of Privacy Practices").underline()
+                        + Text("Service Agreement").underline().foregroundColor(Color("BrandBlue"))
+                        + Text(", and ")
+                        + Text("Notice of Privacy Practices").underline().foregroundColor(Color("BrandBlue"))
+                        + Text(".")
+                    )
+                    .font(.body)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .foregroundColor(.primary)
                 }
-                .padding()
+                .padding(.horizontal, 24)
             }
-            
-            Button("I Agree") {
-                // handle agreement action
+
+            Spacer()
+
+            // I Agree button
+            NavigationLink("I Agree") {
+                VisionDetailView(part: TestPart.near)
             }
+
+            .buttonStyle(.plain)
+            .font(.headline)
             .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.blue)
+            .frame(height: 56)
+            .background(Color("BrandBlue"))
             .foregroundColor(.white)
-            .cornerRadius(30)
-            .padding(.horizontal)
-            .padding(.bottom, 10)
+            .cornerRadius(28)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 16)
         }
+        // Navigation Bar Styling
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {
+            // Speaker icon
             ToolbarItem(placement: .navigationBarTrailing) {
                 Image(systemName: "speaker.wave.2.fill")
+                    .foregroundColor(.primary)
             }
         }
     }
 }
+
+// Preview
+struct DisclaimerView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            DisclaimerView()
+        }
+    }
+}
+

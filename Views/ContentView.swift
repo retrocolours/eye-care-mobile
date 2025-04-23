@@ -1,53 +1,74 @@
+
+
+
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            VStack(spacing: 40) {
+            VStack {
                 Spacer()
                 
-                // Large icon
-                Image(systemName: "doc.text.viewfinder")
+                // Illustration
+                Image("main")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150, height: 150)
-                    .foregroundStyle(.blue.gradient)
+                    .frame(width: 200, height: 200)
                 
-                // Title & estimated time
+//                 Title
                 Text("Visual Acuity Test")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                Label("8 min", systemImage: "clock")
-                    .foregroundColor(.secondary)
+                    .font(.title2.weight(.semibold))
+                    .foregroundColor(.blue)
+                    .padding(.top, 16)
+                
+                // Page indicator dot
+                Circle()
+                    .fill(Color.blue)
+                    .frame(width: 6, height: 6)
+                    .padding(.vertical, 8)
+                
+                // Duration label
+                Label {
+                    Text("8 min")
+                        .font(.subheadline)
+                } icon: {
+                    Image(systemName: "clock")
+                        .font(.subheadline)
+                }
+                .foregroundColor(.secondary)
+                .padding(.bottom, 16)
                 
                 // Description
                 Text("This vision test will evaluate how well you can see both up close and at a distance.")
                     .font(.body)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 32)
                 
                 Spacer()
                 
-                // Navigation button
+                // Start button
                 NavigationLink {
                     DisclaimerView()
                 } label: {
                     Text("Start")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
+                        .font(.headline)
                         .foregroundColor(.white)
-                        .cornerRadius(30)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 56)
+                        .background(Color("BrandBlue"))
+                        .cornerRadius(28)
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 16)
             }
-            .navigationTitle("Visual Acuity Test")
+
             .toolbar {
-                // audio icon on the right
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Image(systemName: "speaker.wave.2.fill")
                 }
             }
+           
         }
     }
 }
