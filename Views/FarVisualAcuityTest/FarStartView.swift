@@ -22,7 +22,7 @@ struct FarStartView: View {
                         .hidden()
                     }
                     VStack(spacing: 0) {
-                        NavBar(title: "Distance Vision Test")
+                        FarNavBar()
                         ProgressView(value: 0.25)
                             .progressViewStyle(.linear)
                             .padding(.top)
