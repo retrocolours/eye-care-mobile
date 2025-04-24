@@ -1,3 +1,10 @@
+//
+//  PrimaryButton.swift
+//  visual-acuity-test
+//
+//  Created by Ryan Burns on 2025-04-24.
+//
+
 import SwiftUI
 
 struct PrimaryButton: View {
