@@ -11,7 +11,7 @@ struct CSpinner: View {
                 .stroke(Color.gray.opacity(0.15), lineWidth: 6)
             // Foreground "C" arc
             Arc(startAngle: .degrees(60), endAngle: .degrees(0), clockwise: false)
-                .stroke(Color("BrandBlue"), style: StrokeStyle(lineWidth: 6, lineCap: .round))
+                .stroke(Color("BrandBlue"), style: StrokeStyle(lineWidth: 4, lineCap: .round))
                 .rotationEffect(.degrees(rotation))
                 .animation(.easeInOut(duration: 1.2), value: rotation)
         }
