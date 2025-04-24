@@ -13,7 +13,7 @@ struct PrimaryButton: View {
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(isEnabled ? Color("BrandBlue") : Color.gray.opacity(0.5))
-                .cornerRadius(12)
+                .cornerRadius(100)
                 .opacity(isEnabled ? 1 : 0.7)
         }
         .disabled(!isEnabled)
