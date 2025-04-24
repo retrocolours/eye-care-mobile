@@ -10,7 +10,7 @@ struct PrimaryButton: View {
             Text(title)
                 .font(.headline)
                 .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
+                .frame(width: UIScreen.main.bounds.width * 0.7)
                 .padding()
                 .background(isEnabled ? Color("BrandBlue") : Color.gray.opacity(0.5))
                 .cornerRadius(100)
