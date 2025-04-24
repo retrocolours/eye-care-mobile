@@ -19,11 +19,12 @@ struct FarStartView: View {
                     }, onScreenReader: {
                         // Screen reader action here
                     })
-                    // — Progress Bar at 50%
+                    
                     ProgressView(value: 0.25)
                         .progressViewStyle(.linear)
                         .padding(.top)
                     Spacer()
+                    
                     VStack {
                         Image("far-detail")
                             .resizable()
