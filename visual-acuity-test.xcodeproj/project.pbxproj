@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		929A477F2DBAAB8E003F2816 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 929A477E2DBAAB8A003F2816 /* .gitignore */; };
 		CD07DDCA2DB96B3500D39BA0 /* VisionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD07DDC92DB96B3000D39BA0 /* VisionDetailView.swift */; };
 		CD442BF92DB74A1F00873A93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442BF52DB74A1F00873A93 /* ContentView.swift */; };
 		CD442C042DB74B9200873A93 /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442C032DB74B8D00873A93 /* DisclaimerView.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		929A477E2DBAAB8A003F2816 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CD07DDC92DB96B3000D39BA0 /* VisionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDetailView.swift; sourceTree = "<group>"; };
 		CD442BF52DB74A1F00873A93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CD442C032DB74B8D00873A93 /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		CD96DC7D2DB31C4500EDCE4A = {
 			isa = PBXGroup;
 			children = (
+				929A477E2DBAAB8A003F2816 /* .gitignore */,
 				CD96DC882DB31C4500EDCE4A /* visual-acuity-test */,
 				CD442C022DB74B2E00873A93 /* Views */,
 				CD96DC982DB31C4800EDCE4A /* visual-acuity-testTests */,
@@ -232,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				929A477F2DBAAB8E003F2816 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
