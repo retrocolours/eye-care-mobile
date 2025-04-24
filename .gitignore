@@ -40,6 +40,16 @@ playground.xcworkspace
 *.moved-aside
 *.xcuserstate
 
+# Ignore user-specific workspace state files
+*.xcworkspace/xcuserdata/*
+*.xcodeproj/xcuserdata/*
+*.xcuserstate
+*.xcsettings
+*.xccheckout
+*.moved-aside
+*.swp
+*.swo
+
 # Swift Package Manager
 .swiftpm/
 
