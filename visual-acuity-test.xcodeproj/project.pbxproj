@@ -11,6 +11,7 @@
 		CD07DDCA2DB96B3500D39BA0 /* VisionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD07DDC92DB96B3000D39BA0 /* VisionDetailView.swift */; };
 		CD442BF92DB74A1F00873A93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442BF52DB74A1F00873A93 /* ContentView.swift */; };
 		CD442C042DB74B9200873A93 /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442C032DB74B8D00873A93 /* DisclaimerView.swift */; };
+		CDE8DF2D2DBACE8A00BFE641 /* BeforeStartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE8DF2C2DBACE6C00BFE641 /* BeforeStartingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		CD96DC862DB31C4500EDCE4A /* visual-acuity-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "visual-acuity-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96DC952DB31C4800EDCE4A /* visual-acuity-testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "visual-acuity-testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96DC9F2DB31C4800EDCE4A /* visual-acuity-testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "visual-acuity-testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDE8DF2C2DBACE6C00BFE641 /* BeforeStartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeStartingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -105,6 +107,7 @@
 				929A47822DBAAC00003F2816 /* FarVisualAcuityTest */,
 				929A47812DBAABF8003F2816 /* NearVisualAcuityTest */,
 				CD07DDC92DB96B3000D39BA0 /* VisionDetailView.swift */,
+				CDE8DF2C2DBACE6C00BFE641 /* BeforeStartingView.swift */,
 				CD442C032DB74B8D00873A93 /* DisclaimerView.swift */,
 				CD442BF52DB74A1F00873A93 /* ContentView.swift */,
 			);
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDE8DF2D2DBACE8A00BFE641 /* BeforeStartingView.swift in Sources */,
 				CD07DDCA2DB96B3500D39BA0 /* VisionDetailView.swift in Sources */,
 				CD442C042DB74B9200873A93 /* DisclaimerView.swift in Sources */,
 				CD442BF92DB74A1F00873A93 /* ContentView.swift in Sources */,
