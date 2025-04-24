@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct WhatToExpectView: View {
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0) {
+            NavBar(title: "Distance Vision Test")
+            ProgressView(value: 0.25)
+                .progressViewStyle(.linear)
+                .padding(.top)
+            Spacer()
+        }
+        .hideBackButton()
     }
 }
 

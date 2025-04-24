@@ -1,13 +1,19 @@
 import SwiftUI
 
-struct FarHeader: View {
+struct NavBar: View {
+    @Environment(\.dismiss) private var dismiss
     var onBack: (() -> Void)? = nil
     var onScreenReader: (() -> Void)? = nil
-    
+    let title: String
+
     var body: some View {
         HStack {
             Button(action: {
-                onBack?()
+                if let onBack = onBack {
+                    onBack()
+                } else {
+                    dismiss()
+                }
             }) {
                 Image(systemName: "chevron.left")
                     .font(.title2.weight(.semibold))
@@ -16,13 +22,18 @@ struct FarHeader: View {
             .accessibilityLabel("Back")
             
             Spacer()
-            Text("Distance Vision Test")
+            Text(title)
                 .font(.headline)
                 .foregroundColor(.primary)
                 .accessibilityAddTraits(.isHeader)
             Spacer()
             Button(action: {
-                onScreenReader?()
+                if let onScreenReader = onScreenReader {
+                    onScreenReader()
+                } else {
+                    // Default: announce the title for accessibility
+                    UIAccessibility.post(notification: .announcement, argument: title)
+                }
             }) {
                 Image(systemName: "speaker.wave.2.fill")
                     .font(.title2)
@@ -37,5 +48,5 @@ struct FarHeader: View {
 }
 
 #Preview {
-    FarHeader()
+    NavBar(title: "Preview Title")
 }
