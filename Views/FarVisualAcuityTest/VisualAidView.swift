@@ -11,7 +11,7 @@ struct VisualAidView: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                FarNavBar()
+                // Built-in navigation bar will be used instead of FarNavBar
                 ProgressView(value: 0.25)
                     .progressViewStyle(.linear)
                     .padding(.top, geo.size.height * 0.02)
@@ -40,7 +40,6 @@ struct VisualAidView: View {
 //            }
 //            .hidden()
         }
-        .hideBackButton()
     }
 }
 

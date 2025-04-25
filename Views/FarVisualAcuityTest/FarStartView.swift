@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct FarStartView: View {
-    var onContinue: (() -> Void)? = nil
-    @State private var navigate = false
     @State private var spinnerID = UUID()
-
+    
     var body: some View {
         NavigationView {
             GeometryReader { geo in
                 ZStack {
                     VStack(spacing: 0) {
-                        FarNavBar()
-                        ProgressView(value: 0.25)
-                            .progressViewStyle(.linear)
-                            .padding(.top)
+                        ProgressBar(fillAmount: 0.1)
                         Spacer(minLength: geo.size.height * 0.03)
                         VStack(spacing: geo.size.height * 0.02) {
                             Image("far-detail")
@@ -44,24 +39,28 @@ struct FarStartView: View {
                         }
                         .padding(.horizontal, geo.size.width * 0.04)
                         Spacer()
-                        PrimaryButton(title: "Continue") {navigate = true}
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(.horizontal, geo.size.width * 0.04)
-                            .padding(.bottom, geo.safeAreaInsets.bottom > 0 ? geo.safeAreaInsets.bottom : geo.size.height * 0.03)
-                            .accessibilityIdentifier("continueButton")
+                        NavigationLink(destination: WhatToExpectView()) {
+                            PrimaryButton(title: "Continue")
+                        }
+                        .padding(.horizontal, geo.size.width * 0.1)
+                        .padding(.bottom, geo.safeAreaInsets.bottom > 0 ? geo.safeAreaInsets.bottom : geo.size.height * 0.03)
                     }
-                    // Navigation Link
-                    NavigationLink(destination: WhatToExpectView(), isActive: $navigate) {
-                        EmptyView()
-                    }
-                    .hidden()
                 }
             }
             // Reset spinner every time this view appears
             .onAppear {
                 spinnerID = UUID()
             }
-        }
+            // Navigation Bar Styling
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Distance Vision Test")
+            .toolbar {
+                // Speaker icon
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    ScreenReader(textToSpeak: "Part 2: Distance Vision Test. Let's get started!")
+                }
+            }
+        }.tint(.black)
     }
 }
 

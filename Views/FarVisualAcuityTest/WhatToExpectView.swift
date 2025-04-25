@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WhatToExpectView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var navigate = false
+
     @State private var visibleIndex = 0
     let steps = [
         "Place your phone on a table",
@@ -24,10 +24,7 @@ struct WhatToExpectView: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                FarNavBar()
-                ProgressView(value: 0.25)
-                    .progressViewStyle(.linear)
-                    .padding(.top, geo.size.height * 0.02)
+                ProgressBar(fillAmount: 0.2)
                 BrandHeader(title: "What to Expect during your Distance Vision Test", topPadding: geo.size.height * 0.04)
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(steps.indices, id: \.self) { idx in
@@ -68,20 +65,25 @@ struct WhatToExpectView: View {
                 }
                 Spacer()
                 if visibleIndex > steps.count {
-                    PrimaryButton(title: "I Understand") { navigate = true }
-                        .transition(.opacity)
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, geo.safeAreaInsets.bottom > 0 ? geo.safeAreaInsets.bottom : geo.size.height * 0.03)
+                    NavigationLink(destination: VisualAidView()) {
+                        PrimaryButton(title: "I Understand")
+                    }
+                    .transition(.opacity)
+                    .padding(.horizontal, geo.size.width * 0.1)
+                    .padding(.bottom, geo.safeAreaInsets.bottom > 0 ? geo.safeAreaInsets.bottom : geo.size.height * 0.03)
                 }
             }
-            // Navigation Link
-            NavigationLink(destination: VisualAidView(), isActive: $navigate) {
-                EmptyView()
-            }
-            .hidden()
 
         }    
-        .hideBackButton()
+        // Navigation Bar Styling
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Distance Vision Test")
+        .toolbar {
+            // Speaker icon
+            ToolbarItem(placement: .navigationBarTrailing) {
+                ScreenReader(textToSpeak: "What to Expect during your Distance Vision Test... 1. Place your phone on a table... 2. Measure and Stand 8 feet away... 3. Cover your eye gently... 4. Letters appear on the screen... 5. Say each letter out loud... 6. Repeat as they get smaller... 7. Switch eyes when prompted... Tip: Take your time. There's no rush.")
+            }
+        }
         .onAppear {
             visibleIndex = 0
             for i in 1...steps.count + 1 {
@@ -95,6 +97,11 @@ struct WhatToExpectView: View {
     }
 }
 
-#Preview {
-WhatToExpectView()
+// Preview
+struct WhatToExpectView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            WhatToExpectView()
+        }
+    }
 }
