@@ -65,6 +65,11 @@
 			path = "visual-acuity-testUITests";
 			sourceTree = "<group>";
 		};
+		CDF7B7B52DBC42F7001166AD /* Setup */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Setup;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +100,7 @@
 		CD442C022DB74B2E00873A93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CDF7B7B52DBC42F7001166AD /* Setup */,
 				929A47832DBAAC07003F2816 /* Shared */,
 				929A47822DBAAC00003F2816 /* FarVisualAcuityTest */,
 				929A47812DBAABF8003F2816 /* NearVisualAcuityTest */,
@@ -144,6 +150,7 @@
 				929A47822DBAAC00003F2816 /* FarVisualAcuityTest */,
 				929A47832DBAAC07003F2816 /* Shared */,
 				CD96DC882DB31C4500EDCE4A /* visual-acuity-test */,
+				CDF7B7B52DBC42F7001166AD /* Setup */,
 			);
 			name = "visual-acuity-test";
 			packageProductDependencies = (

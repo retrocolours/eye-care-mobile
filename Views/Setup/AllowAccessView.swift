@@ -10,11 +10,11 @@ import SwiftUI
 struct AllowAccessView: View {
     var body: some View {
         VStack(spacing: 0) {
-            // 1) Progress bar (100%)
+            // Progress bar
             ProgressView(value: 0.2)
                 .progressViewStyle(.linear)
 
-            // 2) Main content
+            // Main content
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     Spacer().frame(height: 16)
@@ -82,7 +82,7 @@ struct AllowAccessView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 16)
         }
-        // 4) Nav‐bar
+        // Nav‐bar
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {

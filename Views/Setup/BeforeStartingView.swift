@@ -22,7 +22,7 @@ struct BeforeStartingView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // Nav‐bar (inline)
+            // Nav‐bar
             Text("Before Starting")
                 .font(.headline.weight(.semibold))
                 .foregroundColor(Color("BrandBlue"))

@@ -20,7 +20,7 @@ struct ContentView: View {
                     .scaledToFit()
                     .frame(width: 200, height: 200)
                 
-//                 Title
+                // Title
                 Text("Visual Acuity Test")
                     .font(.title2.weight(.semibold))
                     .foregroundColor(.blue)
