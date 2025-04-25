@@ -1,3 +1,10 @@
+//
+//  BeforeStartingView.swift
+//  visual-acuity-test
+//
+//  Created by acidgypsycat on 2025-04-24.
+//
+
 import SwiftUI
 
 struct BeforeStartingView: View {
@@ -15,7 +22,7 @@ struct BeforeStartingView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // Header
+            // Nav‐bar (inline)
             Text("Before Starting")
                 .font(.headline.weight(.semibold))
                 .foregroundColor(Color("BrandBlue"))
@@ -26,7 +33,7 @@ struct BeforeStartingView: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 8)
             
-            // Checklist
+            // Checklist items fade in one by one
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ForEach(titles.indices, id: \.self) { idx in
@@ -40,12 +47,10 @@ struct BeforeStartingView: View {
                                     
                                     Text(titles[idx])
                                         .font(.body)
-                                        .fixedSize(horizontal: false, vertical: true)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                                 .padding(.vertical, 12)
                                 
-                                // always draw a divider after each item:
                                 Divider()
                             }
                             .transition(.opacity)
@@ -57,10 +62,10 @@ struct BeforeStartingView: View {
             
             Spacer()
             
-            // "I'm Ready to Begin" button
+            // Navigate to DeviceSettingsView
             if showButton {
-                Button("I’m Ready to Begin") {
-                    // TODO: kick off the first subtest
+                NavigationLink("I’m Ready to Begin") {
+                    DeviceSettingsView()
                 }
                 .font(.headline)
                 .foregroundColor(.white)
@@ -77,41 +82,37 @@ struct BeforeStartingView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {
-        
-            ToolbarItem(placement: .principal) {
-                Text("Visual Acuity Test")
-                    .font(.headline)
-            }
+            // speaker icon on the right
             ToolbarItem(placement: .navigationBarTrailing) {
                 Image(systemName: "speaker.wave.2.fill")
                     .foregroundColor(.primary)
             }
         }
         .onAppear {
-            // Fade in the whole screen
+            // Fade the entire screen in
             withAnimation(.easeIn(duration: 0.4)) {
                 screenAppeared = true
             }
             
-            // Slow stagger: first at 0.6s, then 0.8s apart
+            // Stagger each checklist item
             let initialDelay: TimeInterval = 0.6
             let perItemDelay: TimeInterval = 0.8
             let fadeDuration: TimeInterval = 0.7
-            let buttonPadding: TimeInterval = 0.4
+            let buttonDelay: TimeInterval = 0.4
             
             for idx in titles.indices {
-                let delay = initialDelay + Double(idx) * perItemDelay
-                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                let when = initialDelay + Double(idx) * perItemDelay
+                DispatchQueue.main.asyncAfter(deadline: .now() + when) {
                     withAnimation(.easeIn(duration: fadeDuration)) {
                         visibleCount = idx + 1
                     }
                 }
             }
             
-            // Show button after last divider
+            // Show the “I’m Ready to Begin” button after all items appear
             let totalDelay = initialDelay
-                            + Double(titles.count) * perItemDelay
-                            + buttonPadding
+                             + Double(titles.count) * perItemDelay
+                             + buttonDelay
             DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
                 withAnimation(.easeIn(duration: fadeDuration)) {
                     showButton = true
@@ -128,3 +129,4 @@ struct BeforeStartingView_Previews: PreviewProvider {
         }
     }
 }
+

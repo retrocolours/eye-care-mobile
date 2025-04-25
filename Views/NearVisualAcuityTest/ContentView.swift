@@ -1,5 +1,10 @@
 
-
+//
+//  ContentView.swift
+//  visual-acuity-test
+//
+//  Created by acidgypsycat on 2025-04-22.
+//
 
 import SwiftUI
 
