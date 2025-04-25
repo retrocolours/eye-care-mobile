@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WhatToExpectView: View {
     @Environment(\.dismiss) private var dismiss
-
+    @State private var navigate = false
     @State private var visibleIndex = 0
     let steps = [
         "Place your phone on a table",
@@ -22,56 +22,72 @@ struct WhatToExpectView: View {
     ]
     
     var body: some View {
-        VStack(spacing: 0) {
-            FarNavBar()
-            ProgressView(value: 0.25)
-                .progressViewStyle(.linear)
-                .padding(.top)
-            
-            Text("What to Expect during your Distance Vision Test")
-                .font(.title2.weight(.bold))
-                .padding(.vertical, 16)
-                .foregroundColor(Color("BrandBlue"))
-            
-            VStack(alignment: .leading, spacing: 0) {
-                ForEach(steps.indices, id: \.self) { idx in
-                    if visibleIndex >= idx + 1 {
-                        HStack(alignment: .center) {
-                            ZStack {
-                                Circle()
-                                    .stroke(Color("BrandBlue"), lineWidth: 1)
-                                    .frame(width: 30, height: 30)
-                                Text("\(idx + 1)")
-                                    .font(.headline)
-                                    .foregroundColor(Color("BrandBlue"))
+        GeometryReader { geo in
+            VStack(spacing: 0) {
+                FarNavBar()
+                ProgressView(value: 0.25)
+                    .progressViewStyle(.linear)
+                    .padding(.top)
+                Text("What to Expect during your Distance Vision Test")
+                    .font(.title2.weight(.bold))
+                    .padding(.vertical, 16)
+                    .foregroundColor(Color("BrandBlue"))
+                VStack(alignment: .leading, spacing: 0) {
+                    ForEach(steps.indices, id: \.self) { idx in
+                        if visibleIndex >= idx + 1 {
+                            HStack(alignment: .center) {
+                                ZStack {
+                                    Circle()
+                                        .stroke(Color("BrandBlue"), lineWidth: 1)
+                                        .frame(width: 30, height: 30)
+                                    Text("\(idx + 1)")
+                                        .font(.headline)
+                                        .foregroundColor(Color("BrandBlue"))
+                                }
+                                Text(steps[idx])
+                                    .font(.body.weight(.semibold))
+                                    .foregroundColor(.primary)
+                                    .multilineTextAlignment(.leading)
+                                    .transition(.opacity)
+                                    .padding(.leading, 10)
                             }
-                            Text(steps[idx])
-                                .font(.body.weight(.semibold))
-                                .foregroundColor(.primary)
-                                .multilineTextAlignment(.leading)
-                                .transition(.opacity)
-                                .padding(.leading, 10)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.vertical, 16)
+                            .opacity(visibleIndex >= idx + 1 ? 1 : 0)
+                            .animation(.easeIn(duration: 0.5), value: visibleIndex)
+                            Divider()
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.vertical, 16)
-                        .opacity(visibleIndex >= idx + 1 ? 1 : 0)
-                        .animation(.easeIn(duration: 0.5), value: visibleIndex)
-                        Divider()
                     }
                 }
-            }
-            .padding(.horizontal, 16)
-            if visibleIndex > steps.count {
-                Text("Tip: Take your time. There's no rush.")
-                    .font(.body)
-                    .foregroundColor(Color("BrandBlue"))
+                .padding(.horizontal, 16)
+                if visibleIndex > steps.count {
+                    Text("Tip: Take your time. There's no rush.")
+                        .font(.body)
+                        .foregroundColor(Color("BrandBlue"))
+                        .transition(.opacity)
+                        .padding(.top, 16)
+                        .padding(.leading, 16)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                Spacer()
+                if visibleIndex > steps.count {
+                    PrimaryButton(title: "I Understand") {
+                        navigate = true
+                    }
                     .transition(.opacity)
-                    .padding(.top, 16)
-                    .padding(.leading, 16)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, geo.safeAreaInsets.bottom > 0 ? geo.safeAreaInsets.bottom : 32)
+                }
             }
-            Spacer()
-        }
+            .background(Color(.systemBackground))
+            .edgesIgnoringSafeArea(.bottom)
+            // Navigation Link
+            NavigationLink(destination: VisualAidView(), isActive: $navigate) {
+                EmptyView()
+            }
+            .hidden()
+
+        }    
         .hideBackButton()
         .onAppear {
             visibleIndex = 0
@@ -87,5 +103,5 @@ struct WhatToExpectView: View {
 }
 
 #Preview {
-    WhatToExpectView()
+WhatToExpectView()
 }

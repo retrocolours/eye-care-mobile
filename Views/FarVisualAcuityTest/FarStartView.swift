@@ -68,6 +68,11 @@ struct FarStartView: View {
                     }
                     .background(Color(.systemBackground))
                     .edgesIgnoringSafeArea(.bottom)
+                    // Navigation Link
+                    NavigationLink(destination: WhatToExpectView(), isActive: $navigate) {
+                        EmptyView()
+                    }
+                    .hidden()
                 }
             }
             // Reset spinner every time this view appears

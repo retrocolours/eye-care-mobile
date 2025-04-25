@@ -23,6 +23,7 @@ struct VisionDetailView: View {
 
     var body: some View {
         VStack(spacing: 0) {
+            NavBar(title: "Near Nav")
             // — Progress Bar at 50%
             ProgressView(value: 0.5)
                 .progressViewStyle(.linear)
