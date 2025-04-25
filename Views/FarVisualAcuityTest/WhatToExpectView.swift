@@ -27,10 +27,12 @@ struct WhatToExpectView: View {
                 FarNavBar()
                 ProgressView(value: 0.25)
                     .progressViewStyle(.linear)
-                    .padding(.top)
+                    .padding(.top, geo.size.height * 0.02)
                 Text("What to Expect during your Distance Vision Test")
                     .font(.title2.weight(.bold))
-                    .padding(.vertical, 16)
+                    .minimumScaleFactor(0.7)
+                    .lineLimit(2)
+                    .padding(.vertical, geo.size.height * 0.04)
                     .foregroundColor(Color("BrandBlue"))
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(steps.indices, id: \.self) { idx in
@@ -49,7 +51,7 @@ struct WhatToExpectView: View {
                                     .foregroundColor(.primary)
                                     .multilineTextAlignment(.leading)
                                     .transition(.opacity)
-                                    .padding(.leading, 10)
+                                    .padding(.leading, geo.size.width * 0.025)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.vertical, 16)
@@ -65,7 +67,7 @@ struct WhatToExpectView: View {
                         .font(.body)
                         .foregroundColor(Color("BrandBlue"))
                         .transition(.opacity)
-                        .padding(.top, 16)
+                        .padding(.top, geo.size.height * 0.02)
                         .padding(.leading, 16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -76,7 +78,7 @@ struct WhatToExpectView: View {
                     }
                     .transition(.opacity)
                     .padding(.horizontal, 16)
-                    .padding(.bottom, geo.safeAreaInsets.bottom > 0 ? geo.safeAreaInsets.bottom : 32)
+                    .padding(.bottom, geo.safeAreaInsets.bottom > 0 ? geo.safeAreaInsets.bottom : geo.size.height * 0.03)
                 }
             }
             .background(Color(.systemBackground))
