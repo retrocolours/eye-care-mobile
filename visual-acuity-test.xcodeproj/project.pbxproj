@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		929A477F2DBAAB8E003F2816 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 929A477E2DBAAB8A003F2816 /* .gitignore */; };
-		CD07DDCA2DB96B3500D39BA0 /* VisionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD07DDC92DB96B3000D39BA0 /* VisionDetailView.swift */; };
-		CD442BF92DB74A1F00873A93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442BF52DB74A1F00873A93 /* ContentView.swift */; };
-		CD442C042DB74B9200873A93 /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD442C032DB74B8D00873A93 /* DisclaimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,9 +29,6 @@
 
 /* Begin PBXFileReference section */
 		929A477E2DBAAB8A003F2816 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		CD07DDC92DB96B3000D39BA0 /* VisionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDetailView.swift; sourceTree = "<group>"; };
-		CD442BF52DB74A1F00873A93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		CD442C032DB74B8D00873A93 /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
 		CD96DC862DB31C4500EDCE4A /* visual-acuity-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "visual-acuity-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96DC952DB31C4800EDCE4A /* visual-acuity-testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "visual-acuity-testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96DC9F2DB31C4800EDCE4A /* visual-acuity-testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "visual-acuity-testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,9 +98,6 @@
 				929A47832DBAAC07003F2816 /* Shared */,
 				929A47822DBAAC00003F2816 /* FarVisualAcuityTest */,
 				929A47812DBAABF8003F2816 /* NearVisualAcuityTest */,
-				CD07DDC92DB96B3000D39BA0 /* VisionDetailView.swift */,
-				CD442C032DB74B8D00873A93 /* DisclaimerView.swift */,
-				CD442BF52DB74A1F00873A93 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,9 +272,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD07DDCA2DB96B3500D39BA0 /* VisionDetailView.swift in Sources */,
-				CD442C042DB74B9200873A93 /* DisclaimerView.swift in Sources */,
-				CD442BF92DB74A1F00873A93 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

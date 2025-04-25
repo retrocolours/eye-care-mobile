@@ -4,7 +4,7 @@ import SwiftUI
 struct DisclaimerView: View {
     var body: some View {
         VStack(spacing: 0) {
-            // MARK: Content
+            // Content
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     // Headline
