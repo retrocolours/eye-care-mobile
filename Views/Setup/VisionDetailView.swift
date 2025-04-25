@@ -1,5 +1,10 @@
 
-
+//
+//  VisionDetailView.swift
+//  visual-acuity-test
+//
+//  Created by acidgypsycat on 2025-04-23.
+//
 import SwiftUI
 
 enum TestPart: String, CaseIterable, Identifiable {
@@ -23,8 +28,8 @@ struct VisionDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             // Progress bar
-            ProgressView(value: 0.5)
-                .progressViewStyle(.linear)
+//            ProgressView(value: 0.5)
+//                .progressViewStyle(.linear)
 
             ScrollView {
                 VStack(spacing: 24) {
