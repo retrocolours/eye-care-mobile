@@ -17,23 +17,24 @@ struct PrimaryButton: View {
             Text(title)
                 .font(.headline)
                 .foregroundColor(.white)
-                .frame(width: UIScreen.main.bounds.width * 0.7)
                 .padding()
+                .frame(maxWidth: .infinity)
                 .background(isEnabled ? Color("BrandBlue") : Color.gray.opacity(0.5))
                 .cornerRadius(100)
                 .opacity(isEnabled ? 1 : 0.7)
         }
         .disabled(!isEnabled)
-        .padding(.horizontal)
-        .padding(.bottom, 24)
         .accessibilityLabel(title)
     }
 }
 
 #Preview {
-    VStack {
+    VStack(spacing: 20) {
         PrimaryButton(title: "Continue", action: {})
+            .padding(.horizontal, 32)
         PrimaryButton(title: "Disabled", action: {}, isEnabled: false)
+            .padding(.horizontal, 32)
     }
     .background(Color(.systemBackground))
+    .padding(.vertical, 40)
 }

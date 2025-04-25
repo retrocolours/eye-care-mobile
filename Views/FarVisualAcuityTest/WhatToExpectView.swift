@@ -28,12 +28,7 @@ struct WhatToExpectView: View {
                 ProgressView(value: 0.25)
                     .progressViewStyle(.linear)
                     .padding(.top, geo.size.height * 0.02)
-                Text("What to Expect during your Distance Vision Test")
-                    .font(.title2.weight(.bold))
-                    .minimumScaleFactor(0.7)
-                    .lineLimit(2)
-                    .padding(.vertical, geo.size.height * 0.04)
-                    .foregroundColor(Color("BrandBlue"))
+                BrandHeader(title: "What to Expect during your Distance Vision Test", topPadding: geo.size.height * 0.04)
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(steps.indices, id: \.self) { idx in
                         if visibleIndex >= idx + 1 {
@@ -73,16 +68,12 @@ struct WhatToExpectView: View {
                 }
                 Spacer()
                 if visibleIndex > steps.count {
-                    PrimaryButton(title: "I Understand") {
-                        navigate = true
-                    }
-                    .transition(.opacity)
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, geo.safeAreaInsets.bottom > 0 ? geo.safeAreaInsets.bottom : geo.size.height * 0.03)
+                    PrimaryButton(title: "I Understand") { navigate = true }
+                        .transition(.opacity)
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, geo.safeAreaInsets.bottom > 0 ? geo.safeAreaInsets.bottom : geo.size.height * 0.03)
                 }
             }
-            .background(Color(.systemBackground))
-            .edgesIgnoringSafeArea(.bottom)
             // Navigation Link
             NavigationLink(destination: VisualAidView(), isActive: $navigate) {
                 EmptyView()
