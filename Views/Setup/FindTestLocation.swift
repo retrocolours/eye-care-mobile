@@ -90,7 +90,7 @@ struct FindTestLocationView: View {
         .navigationTitle("Visual Acuity Test")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Image(systemName: "speaker.wave.2.fill")
+                ScreenReader(textToSpeak: "Fill me in")
             }
         }
     }

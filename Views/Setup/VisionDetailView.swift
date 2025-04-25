@@ -73,12 +73,8 @@ struct VisionDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {
-         
-            ToolbarItem(placement: .principal) {
-                Text("Visual Acuity Test").font(.headline)
-            }
             ToolbarItem(placement: .navigationBarTrailing) {
-                Image(systemName: "speaker.wave.2.fill")
+                ScreenReader(textToSpeak: "Fill me in")
             }
         }
         // navigationDestination instead of hidden link, was getting 'depricated' issue

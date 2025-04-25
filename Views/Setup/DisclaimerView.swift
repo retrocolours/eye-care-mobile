@@ -77,8 +77,7 @@ struct DisclaimerView: View {
         .toolbar {
             // Speaker icon
             ToolbarItem(placement: .navigationBarTrailing) {
-                Image(systemName: "speaker.wave.2.fill")
-                    .foregroundColor(.primary)
+                ScreenReader(textToSpeak: "Fill me in")
             }
         }
     }
