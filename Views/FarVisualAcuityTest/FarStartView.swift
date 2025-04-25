@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct FarStartView: View {
+    var onContinue: (() -> Void)? = nil
     @State private var navigate = false
+    @State private var spinnerID = UUID()
 
     var body: some View {
         NavigationView {
@@ -50,6 +52,7 @@ struct FarStartView: View {
                                 .minimumScaleFactor(0.8)
                                 .padding(.top, geo.size.height * 0.01)
                             CSpinner()
+                                .id(spinnerID)
                                 .frame(width: 30, height: 30)
                                 .padding(.top, geo.size.height * 0.015)
                         }
@@ -66,6 +69,10 @@ struct FarStartView: View {
                     .background(Color(.systemBackground))
                     .edgesIgnoringSafeArea(.bottom)
                 }
+            }
+            // Reset spinner every time this view appears
+            .onAppear {
+                spinnerID = UUID()
             }
         }
     }
