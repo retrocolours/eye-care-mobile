@@ -1,10 +1,15 @@
-
+//
+//  DisclaimerView.swift
+//  visual-acuity-test
+//
+//  Created by acidgypsycat on 2025-04-22.
+//
 import SwiftUI
 
 struct DisclaimerView: View {
     var body: some View {
         VStack(spacing: 0) {
-            // MARK: Content
+            // Content
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     // Headline
