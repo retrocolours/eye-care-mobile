@@ -28,8 +28,8 @@ struct VisionDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             // Progress bar
-            ProgressView(value: 0.5)
-                .progressViewStyle(.linear)
+//            ProgressView(value: 0.5)
+//                .progressViewStyle(.linear)
 
             ScrollView {
                 VStack(spacing: 24) {

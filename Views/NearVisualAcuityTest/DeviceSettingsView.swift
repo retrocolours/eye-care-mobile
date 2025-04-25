@@ -11,7 +11,7 @@ struct DeviceSettingsView: View {
     var body: some View {
         VStack(spacing: 0) {
             // 1) Progress bar at 75%
-            ProgressView(value: 0.75)
+            ProgressView(value: 0.1)
                 .progressViewStyle(.linear)
 
             // 2) Scrollable content
@@ -88,15 +88,6 @@ struct DeviceSettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: { /* pop */ }) {
-                    Image(systemName: "chevron.left")
-                }
-            }
-            ToolbarItem(placement: .principal) {
-                Text("Visual Acuity Test")
-                    .font(.headline)
-            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Image(systemName: "speaker.wave.2.fill")
             }
