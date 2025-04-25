@@ -11,10 +11,7 @@ import SwiftUI
 struct FindTestLocationView: View {
     var body: some View {
         VStack(spacing: 0) {
-            // Progress bar
-            ProgressView(value: 0.3)
-                .progressViewStyle(.linear)
-
+            ProgressBar(fillAmount: 0.3)
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     Spacer().frame(height: 16)
