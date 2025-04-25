@@ -13,10 +13,14 @@ struct ScreenReader: View {
     var textToSpeak: String
        
        var body: some View {
-           Button("Speak to me") {
+           Button(action: {
                let utterance = AVSpeechUtterance(string: textToSpeak)
                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
                synthesizer.speak(utterance)
+           }) {
+               Image(systemName: "speaker.wave.2")
+                   .foregroundColor(.primary)
+                   .fontWeight(.bold)
            }
        }
    }

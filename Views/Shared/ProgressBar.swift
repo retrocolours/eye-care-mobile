@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ProgressBar: View {
+    var fillAmount: Double
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ProgressView(value: fillAmount)
+            .progressViewStyle(.linear)
+            .tint(Color("BrandBlue"))
     }
 }
 
 #Preview {
-    ProgressBar()
+    ProgressBar(fillAmount: 0.25)
 }
