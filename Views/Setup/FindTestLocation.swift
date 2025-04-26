@@ -11,10 +11,7 @@ import SwiftUI
 struct FindTestLocationView: View {
     var body: some View {
         VStack(spacing: 0) {
-            // Progress bar
-            ProgressView(value: 0.3)
-                .progressViewStyle(.linear)
-
+            ProgressBar(fillAmount: 0.3)
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     Spacer().frame(height: 16)
@@ -90,7 +87,7 @@ struct FindTestLocationView: View {
         .navigationTitle("Visual Acuity Test")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Image(systemName: "speaker.wave.2.fill")
+                ScreenReader(textToSpeak: "Fill me in")
             }
         }
     }

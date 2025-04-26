@@ -84,8 +84,7 @@ struct BeforeStartingView: View {
         .toolbar {
             // speaker icon on the right
             ToolbarItem(placement: .navigationBarTrailing) {
-                Image(systemName: "speaker.wave.2.fill")
-                    .foregroundColor(.primary)
+                ScreenReader(textToSpeak: "Fill me in")
             }
         }
         .onAppear {

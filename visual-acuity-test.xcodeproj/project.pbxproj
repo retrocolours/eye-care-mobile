@@ -40,14 +40,14 @@
 			path = NearVisualAcuityTest;
 			sourceTree = "<group>";
 		};
-		929A47822DBAAC00003F2816 /* FarVisualAcuityTest */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FarVisualAcuityTest;
-			sourceTree = "<group>";
-		};
 		929A47832DBAAC07003F2816 /* Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		929A47B22DBAE448003F2816 /* FarVisualAcuityTest */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FarVisualAcuityTest;
 			sourceTree = "<group>";
 		};
 		CD96DC882DB31C4500EDCE4A /* visual-acuity-test */ = {
@@ -102,8 +102,11 @@
 			children = (
 				CDF7B7B52DBC42F7001166AD /* Setup */,
 				929A47832DBAAC07003F2816 /* Shared */,
-				929A47822DBAAC00003F2816 /* FarVisualAcuityTest */,
 				929A47812DBAABF8003F2816 /* NearVisualAcuityTest */,
+				CD07DDC92DB96B3000D39BA0 /* VisionDetailView.swift */,
+				CD442C032DB74B8D00873A93 /* DisclaimerView.swift */,
+				CD442BF52DB74A1F00873A93 /* ContentView.swift */,
+				929A47B22DBAE448003F2816 /* FarVisualAcuityTest */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,8 +150,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				929A47812DBAABF8003F2816 /* NearVisualAcuityTest */,
-				929A47822DBAAC00003F2816 /* FarVisualAcuityTest */,
 				929A47832DBAAC07003F2816 /* Shared */,
+				929A47B22DBAE448003F2816 /* FarVisualAcuityTest */,
 				CD96DC882DB31C4500EDCE4A /* visual-acuity-test */,
 				CDF7B7B52DBC42F7001166AD /* Setup */,
 			);

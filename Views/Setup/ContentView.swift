@@ -67,13 +67,14 @@ struct ContentView: View {
                 .padding(.horizontal, 24)
                 .padding(.bottom, 16)
             }
-
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Visual Acuity Test")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Image(systemName: "speaker.wave.2.fill")
+                    ScreenReader(textToSpeak: "Fill me in")
                 }
             }
            
-        }
+        }.tint(.black)
     }
 }

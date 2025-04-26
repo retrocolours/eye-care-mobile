@@ -10,10 +10,7 @@ import SwiftUI
 struct AllowAccessView: View {
     var body: some View {
         VStack(spacing: 0) {
-            // Progress bar
-            ProgressView(value: 0.2)
-                .progressViewStyle(.linear)
-
+            ProgressBar(fillAmount: 0.2)
             // Main content
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
@@ -87,7 +84,7 @@ struct AllowAccessView: View {
         .navigationTitle("Visual Acuity Test")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Image(systemName: "speaker.wave.2.fill")
+                ScreenReader(textToSpeak: "Fill me in")
             }
         }
     }

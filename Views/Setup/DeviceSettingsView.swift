@@ -11,8 +11,7 @@ struct DeviceSettingsView: View {
     var body: some View {
         VStack(spacing: 0) {
             // Progress bar
-            ProgressView(value: 0.1)
-                .progressViewStyle(.linear)
+            ProgressBar(fillAmount: 0.1)
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
@@ -88,7 +87,7 @@ struct DeviceSettingsView: View {
         .navigationTitle("Visual Acuity Test")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Image(systemName: "speaker.wave.2.fill")
+                ScreenReader(textToSpeak: "Fill me in")
             }
         }
     }
