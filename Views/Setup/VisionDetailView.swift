@@ -4,7 +4,9 @@
 //  visual-acuity-test
 //
 //  Created by acidgypsycat on 2025-04-23.
-//
+
+
+
 import SwiftUI
 
 enum TestPart: String, CaseIterable, Identifiable {
@@ -26,72 +28,97 @@ struct VisionDetailView: View {
     @State private var navigateToChecklist = false
 
     var body: some View {
-        VStack(spacing: 0) {
-            // Progress bar
-//            ProgressView(value: 0.5)
-//                .progressViewStyle(.linear)
+        GeometryReader { geo in
+            VStack(spacing: 0) {
+                // 1) Push content just under the nav‐bar divider
+//                Spacer(minLength: geo.safeAreaInsets.top + 4)
+                
+                // 2) Section heading
+                BrandHeader(
+                    title: "Your Visual Acuity Test includes two parts:",
+                    topPadding: 0
+                )
+                .padding(.top, geo.safeAreaInsets.top)
 
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Section heading
-                    Text("Your Visual Acuity Test includes two parts:")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundColor(Color("BrandBlue"))
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 16)
-                        .padding(.horizontal, 24)
-
-                    // Near vision illustration & label
-                    Image(part.imageName)
+                .padding(.horizontal, geo.size.width * 0.05)
+                
+                // 3) Near-vision illustration + label
+                Image(part.imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(
+                        maxWidth: geo.size.width * 0.8,
+                        maxHeight: geo.size.height * 0.3
+                    )
+                    .clipped()
+                    .padding(.top, geo.size.height * 0.02)
+                
+                Text(part.rawValue)
+                    .font(.headline.weight(.semibold))
+                    .foregroundColor(Color("BrandBlue"))
+                    .padding(.top, geo.size.height * 0.01)
+                
+                // 4) Far-vision illustration and label, fades in
+                if showFar {
+                    Image(TestPart.distance.imageName)
                         .resizable()
                         .scaledToFit()
-                        .frame(maxHeight: 250)
-                    Text(part.rawValue)
+                        .frame(
+                            maxWidth: geo.size.width * 0.8,
+                            maxHeight: geo.size.height * 0.3
+                        )
+                        .clipped()
+                        .padding(.top, geo.size.height * 0.02)
+                    
+                    Text(TestPart.distance.rawValue)
                         .font(.headline.weight(.semibold))
                         .foregroundColor(Color("BrandBlue"))
-                        .padding(.top, 8)
-
-                    // Far vision appears after delay
-                    if showFar {
-                        Image("far")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 250)
-                        Text(TestPart.distance.rawValue)
-                            .font(.headline.weight(.semibold))
-                            .foregroundColor(Color("BrandBlue"))
-                            .multilineTextAlignment(.center)
-                            .padding(.top, 8)
-                    }
-
-                    Spacer()
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, geo.size.width * 0.05)
+                        .padding(.top, geo.size.height * 0.01)
                 }
-                .padding(.horizontal, 24)
+                
+                Spacer()
+                
+                // 5) Hidden link to advance when animation completes
+                NavigationLink(
+                    destination: BeforeStartingView(),
+                    isActive: $navigateToChecklist
+                ) {
+                    EmptyView()
+                }
+                .hidden()
+                .frame(width: 0, height: 0)
+                .padding(.bottom, geo.safeAreaInsets.bottom > 0
+                         ? geo.safeAreaInsets.bottom
+                         : geo.size.height * 0.03)
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .onAppear {
+                // fade in far vision after 2s
+                withAnimation(.easeIn(duration: 0.6).delay(2.0)) {
+                    showFar = true
+                }
+                // then auto-navigate at ~2.6s
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.6) {
+                    navigateToChecklist = true
+                }
             }
         }
-        // Inline nav title and toolbar
+        // 6) Single, inline nav-bar from parent
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                ScreenReader(textToSpeak: "Fill me in")
+                ScreenReader(
+                    textToSpeak:
+                    """
+                    Your Visual Acuity Test includes two parts: Near Vision, then Distance Vision which requires eight-foot space.
+                    """
+                )
             }
         }
-        // navigationDestination instead of hidden link, was getting 'depricated' issue
-        .navigationDestination(isPresented: $navigateToChecklist) {
-            BeforeStartingView()
-        }
-        // Animations
-        .onAppear {
-            // Fade in far vision after 2s
-            withAnimation(.easeIn(duration: 0.6).delay(2.0)) {
-                showFar = true
-            }
-            // Then auto-navigate ~0.6s later
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.6) {
-                navigateToChecklist = true
-            }
-        }
+        .tint(.black)
     }
 }
 
@@ -102,3 +129,5 @@ struct VisionDetailView_Previews: PreviewProvider {
         }
     }
 }
+
+
