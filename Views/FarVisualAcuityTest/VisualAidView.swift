@@ -11,10 +11,7 @@ struct VisualAidView: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                // Built-in navigation bar will be used instead of FarNavBar
-                ProgressView(value: 0.25)
-                    .progressViewStyle(.linear)
-                    .padding(.top, geo.size.height * 0.02)
+                ProgressBar(fillAmount: 0.3)
                 Image("eyeglasses-and-contact-lenses")
                     .resizable()
                     .scaledToFit()
@@ -25,12 +22,7 @@ struct VisualAidView: View {
                     .clipped()
                     .padding(.horizontal, geo.size.width * 0.05)
                     .padding(.vertical, geo.size.width * 0.05)
-                Text("What to Expect during your Distance Vision Test")
-                    .font(.title2.weight(.bold))
-                    .minimumScaleFactor(0.7)
-                    .lineLimit(2)
-                    .padding(.vertical, geo.size.height * 0.04)
-                    .foregroundColor(Color("BrandBlue"))
+                BrandHeader(title:"Prepare for Distance Vision Test", topPadding: 0)
             }
             .background(Color(.systemBackground))
             .edgesIgnoringSafeArea(.bottom)
@@ -43,6 +35,11 @@ struct VisualAidView: View {
     }
 }
 
-#Preview {
-    VisualAidView()
+// Preview
+struct VisualAidView_Preview: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            VisualAidView()
+        }
+    }
 }

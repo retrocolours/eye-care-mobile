@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct ProgressBar: View {
-    var fillAmount: Double
+    var fillAmount: Double // 0.0 to 1.0
+    var barHeight: CGFloat = 10
+    var backgroundColor: Color = .gray.opacity(0.3)
+    var fillColor: Color = Color("BrandBlue")
+
     var body: some View {
-        ProgressView(value: fillAmount)
-            .progressViewStyle(.linear)
-            .tint(Color("BrandBlue"))
+        ZStack(alignment: .leading) {
+            Rectangle()
+                .fill(backgroundColor)
+                .frame(height: barHeight)
+            Rectangle()
+                .fill(fillColor)
+                .frame(height: barHeight)
+                .scaleEffect(x: max(0, min(fillAmount, 1)), y: 1, anchor: .leading)
+                .animation(.linear, value: fillAmount)
+        }
+        .frame(height: barHeight)
+        .clipped()
     }
 }
 
