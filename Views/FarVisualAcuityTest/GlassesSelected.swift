@@ -11,7 +11,7 @@ struct GlassesSelected: View {
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .leading, spacing: 0) {
-                ProgressBar(fillAmount: 0.3)
+                ProgressBar(fillAmount: 0.4)
                 VStack(alignment: .leading, spacing: 0) {
                     Image("person-wearing-glasses")
                         .resizable()
