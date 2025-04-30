@@ -26,11 +26,10 @@ struct VisualAidView: View {
                     .scaledToFit()
                     .frame(
                         maxWidth: geo.size.width * 0.35,
-                        maxHeight: geo.size.height * 0.35
+                        maxHeight: geo.size.height * 0.25
                     )
                     .clipped()
                     .padding(.horizontal, geo.size.width * 0.05)
-                    .padding(.vertical, geo.size.width * 0.05)
                 BrandHeader(title:"Prepare for Distance Vision Test", topPadding: 0)
                 Group {
                     Text("Select eyewear you normally use for viewing ")
@@ -47,12 +46,17 @@ struct VisualAidView: View {
 
                 VStack(spacing: 12) {
                     ForEach(EyewearOption.allCases) { option in
-                        Button(action: { selectedEyewear = option }) {
+                        NavigationLink(destination: {
+                            switch option {
+                            case .glasses:
+                                GlassesSelected()
+                            case .contacts:
+                                ContactsSelected()
+                            case .none:
+                                SetYourDevice()
+                            }
+                        }) {
                             HStack {
-                                ZStack {
-                                    
-                                    
-                                }
                                 Text(option.rawValue)
                                     .foregroundColor(selectedEyewear == option ? .white : .primary)
                                     .font(.body)
@@ -81,13 +85,13 @@ struct VisualAidView: View {
                                     .stroke(selectedEyewear == option ? Color("BrandBlue") : Color.gray.opacity(0.3), lineWidth: 1)
                             )
                         }
+                        .simultaneousGesture(TapGesture().onEnded { selectedEyewear = option })
                     }
                 }
                 .padding(.horizontal, geo.size.width * 0.05)
             }
             .background(Color(.systemBackground))
             .edgesIgnoringSafeArea(.bottom)
-
             Spacer()
         }
         // Navigation Bar Styling

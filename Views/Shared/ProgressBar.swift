@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProgressBar: View {
     var fillAmount: Double // 0.0 to 1.0
-    var barHeight: CGFloat = 8
+    var barHeight: CGFloat = 9
     var backgroundColor: Color = .gray.opacity(0.3)
     var fillColor: Color = Color("BrandBlue")
 
@@ -26,6 +26,7 @@ struct ProgressBar: View {
         }
         .frame(height: barHeight)
         .clipped()
+        
     }
 }
 
