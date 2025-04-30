@@ -13,7 +13,7 @@ struct SetYourDevice: View {
             VStack(spacing: 0) {
                 ProgressBar(fillAmount: 0.5)
                 VStack(alignment: .leading, spacing: 0) {
-                    Image("person-with-contacts")
+                    Image("phone-on-holder")
                         .resizable()
                         .scaledToFit()
                         .frame(
@@ -23,7 +23,7 @@ struct SetYourDevice: View {
                         .clipped()
                         .padding(.horizontal, geo.size.width * 0.05)
                         .padding(.vertical, geo.size.height * 0.025)
-                    BrandHeader(title: "Keep your Contact Lenses On", topPadding: 0)
+                    BrandHeader(title: "Set Your Device", topPadding: 0)
                     Text("Now, place your device on a stable surface where you can see the screen clearly.")
                         .font(.callout.weight(.bold))
                         .minimumScaleFactor(0.8)
