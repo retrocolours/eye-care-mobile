@@ -32,6 +32,7 @@ struct FarStartView: View {
                                 .font(.callout.weight(.light))
                                 .multilineTextAlignment(.center)
                                 .minimumScaleFactor(0.8)
+                                .foregroundColor(Color("GreyText"))
                             CSpinner()
                                 .id(spinnerID)
                                 .frame(width: 30, height: 30)
