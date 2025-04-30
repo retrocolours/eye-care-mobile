@@ -10,25 +10,30 @@ import SwiftUI
 struct PrimaryButton: View {
     var title: String
 
-    var isEnabled: Bool = true
+    var inverted: Bool = false
     
     var body: some View {
     Text(title)
         .font(.headline)
-        .foregroundColor(.white)
+        .foregroundColor(inverted ? Color("BrandBlue") : .white)
         .padding()
         .frame(maxWidth: .infinity)
-        .background(isEnabled ? Color("BrandBlue") : Color.gray.opacity(0.5))
+        .background(inverted ? Color.white : Color("BrandBlue"))
         .cornerRadius(100)
-        .opacity(isEnabled ? 1 : 0.7)
+        .overlay(
+            RoundedRectangle(cornerRadius: 100)
+                .stroke(Color("BrandBlue"), lineWidth: 2)
+        )
+        .opacity(1)
         .accessibilityLabel(title)
+        
 }
 }
 
 #Preview {
     VStack(spacing: 20) {
         PrimaryButton(title: "Continue")
-        PrimaryButton(title: "Disabled", isEnabled: false)
+        PrimaryButton(title: "Disabled", inverted: true)
         Button(action: { print("Tapped") }) {
             PrimaryButton(title: "Wrapped in Button")
         }
