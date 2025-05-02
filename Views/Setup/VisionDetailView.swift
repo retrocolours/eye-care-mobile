@@ -30,19 +30,15 @@ struct VisionDetailView: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                // 1) Push content just under the nav‐bar divider
-//                Spacer(minLength: geo.safeAreaInsets.top + 4)
-                
-                // 2) Section heading
+
                 BrandHeader(
                     title: "Your Visual Acuity Test includes two parts:",
-                    topPadding: 0
+                    topPadding: geo.size.height * 0.015
                 )
-                .padding(.top, geo.safeAreaInsets.top)
 
                 .padding(.horizontal, geo.size.width * 0.05)
                 
-                // 3) Near-vision illustration + label
+                // Near-vision illustration + label
                 Image(part.imageName)
                     .resizable()
                     .scaledToFit()
@@ -58,7 +54,7 @@ struct VisionDetailView: View {
                     .foregroundColor(Color("BrandBlue"))
                     .padding(.top, geo.size.height * 0.01)
                 
-                // 4) Far-vision illustration and label, fades in
+                // Far-vision illustration and label, fades in
                 if showFar {
                     Image(TestPart.distance.imageName)
                         .resizable()
@@ -80,7 +76,7 @@ struct VisionDetailView: View {
                 
                 Spacer()
                 
-                // 5) Hidden link to advance when animation completes
+                // Hidden link to advance when animation completes
                 NavigationLink(
                     destination: BeforeStartingView(),
                     isActive: $navigateToChecklist
@@ -105,7 +101,7 @@ struct VisionDetailView: View {
                 }
             }
         }
-        // 6) Single, inline nav-bar from parent
+    
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {

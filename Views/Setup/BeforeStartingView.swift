@@ -16,108 +16,92 @@ struct BeforeStartingView: View {
         "Speak clearly into microphone"
     ]
     
-    @State private var screenAppeared = false
-    @State private var visibleCount = 0
-    @State private var showButton = false
+    // drives the staggered reveal
+    @State private var visibleIndex = 0
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Nav‐bar
-            Text("Before Starting")
-                .font(.headline.weight(.semibold))
-                .foregroundColor(Color("BrandBlue"))
-                .padding(.top, 16)
-            
-            Text("For accurate results, you'll need:")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .padding(.bottom, 8)
-            
-            // Checklist items fade in one by one
-            ScrollView {
-                LazyVStack(spacing: 0) {
+        GeometryReader { geo in
+            VStack(spacing: 0) {
+                BrandHeader(
+                    title: "Before Starting",
+                    topPadding: geo.size.height * 0.015
+                )
+                .padding(.horizontal, geo.size.width * 0.05)
+                
+                Text("For accurate results, you’ll need:")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .padding(.top, geo.size.height * 0.015)
+                    .padding(.horizontal, geo.size.width * 0.05)
+                
+                VStack(spacing: 0) {
                     ForEach(titles.indices, id: \.self) { idx in
-                        if idx < visibleCount {
-                            VStack(spacing: 0) {
-                                HStack(alignment: .top, spacing: 12) {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .font(.title3)
-                                        .foregroundColor(Color("BrandBlue"))
-                                        .frame(width: 24)
-                                    
-                                    Text(titles[idx])
-                                        .font(.body)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .padding(.vertical, 12)
-                                
-                                Divider()
+                        // each row appears once visibleIndex >= idx+1
+                        HStack(alignment: .top, spacing: 12) {
+                            ZStack {
+                                Circle()
+                                    .stroke(Color("BrandBlue"), lineWidth: 1)
+                                    .frame(width: 30, height: 30)
+                                Text("\(idx+1)")
+                                    .font(.headline)
+                                    .foregroundColor(Color("BrandBlue"))
                             }
-                            .transition(.opacity)
+                            Text(titles[idx])
+                                .font(.body)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding(.vertical, geo.size.height * 0.015)
+                        .padding(.horizontal, geo.size.width * 0.05)
+                        .opacity(visibleIndex >= idx + 1 ? 1 : 0)
+                        .animation(.easeIn(duration: 0.5), value: visibleIndex)
+                        
+                        Divider()
+                            .opacity(visibleIndex >= idx + 1 ? 1 : 0)
+                            .animation(.easeIn(duration: 0.5), value: visibleIndex)
+                    }
+                }
+                
+                Spacer()
+                
+                if visibleIndex > titles.count {
+                    NavigationLink(destination: DeviceSettingsView()) {
+                        PrimaryButton(title: "I’m Ready to Begin")
+                    }
+                    .padding(.horizontal, geo.size.width * 0.1)
+                    .padding(.bottom,
+                             geo.safeAreaInsets.bottom > 0
+                               ? geo.safeAreaInsets.bottom
+                               : geo.size.height * 0.03
+                    )
+                    .transition(.opacity)
+                    .animation(.easeIn(duration: 0.5), value: visibleIndex)
+                }
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .opacity(visibleIndex > 0 ? 1 : 0) // fade entire screen in
+            .onAppear {
+                // stagger each reveal at 1.5s intervals
+                visibleIndex = 0
+                for i in 1...titles.count + 1 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 1.5) {
+                        withAnimation {
+                            visibleIndex = i
                         }
                     }
                 }
-                .padding(.horizontal, 24)
-            }
-            
-            Spacer()
-            
-            // Navigate to DeviceSettingsView
-            if showButton {
-                NavigationLink("I’m Ready to Begin") {
-                    DeviceSettingsView()
-                }
-                .font(.headline)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .frame(height: 56)
-                .background(Color("BrandBlue"))
-                .cornerRadius(28)
-                .padding(.horizontal, 24)
-                .padding(.bottom, 16)
-                .transition(.opacity)
             }
         }
-        .opacity(screenAppeared ? 1 : 0)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {
-            // speaker icon on the right
             ToolbarItem(placement: .navigationBarTrailing) {
-                ScreenReader(textToSpeak: "Fill me in")
+                ScreenReader(textToSpeak:
+                    "Before Starting. For accurate results, you’ll need: a room large enough to stand eight feet from your device; good lighting; a quiet environment; your regular glasses or contacts if you wear any; and to speak clearly into the microphone."
+                )
             }
         }
-        .onAppear {
-            // Fade the entire screen in
-            withAnimation(.easeIn(duration: 0.4)) {
-                screenAppeared = true
-            }
-            
-            // Stagger each checklist item
-            let initialDelay: TimeInterval = 0.6
-            let perItemDelay: TimeInterval = 0.8
-            let fadeDuration: TimeInterval = 0.7
-            let buttonDelay: TimeInterval = 0.4
-            
-            for idx in titles.indices {
-                let when = initialDelay + Double(idx) * perItemDelay
-                DispatchQueue.main.asyncAfter(deadline: .now() + when) {
-                    withAnimation(.easeIn(duration: fadeDuration)) {
-                        visibleCount = idx + 1
-                    }
-                }
-            }
-            
-            // Show the “I’m Ready to Begin” button after all items appear
-            let totalDelay = initialDelay
-                             + Double(titles.count) * perItemDelay
-                             + buttonDelay
-            DispatchQueue.main.asyncAfter(deadline: .now() + totalDelay) {
-                withAnimation(.easeIn(duration: fadeDuration)) {
-                    showButton = true
-                }
-            }
-        }
+        .tint(.black)
     }
 }
 
@@ -128,4 +112,3 @@ struct BeforeStartingView_Previews: PreviewProvider {
         }
     }
 }
-
