@@ -11,7 +11,7 @@ struct SetYourDevice3: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                ProgressBar(fillAmount: 0.7)
+                ProgressBar(fillAmount: 0.5)
                 VStack(alignment: .leading, spacing: 0) {
                     Image("person-measuring")
                         .resizable()

@@ -1,5 +1,5 @@
 //
-//  SetYourDevice4.swift
+//  CountYourSteps.swift
 //  visual-acuity-test
 //
 //  Created by Ryan Burns on 2025-05-05.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct SetYourDevice4: View {
+struct CountYourSteps: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
                 ProgressBar(fillAmount: 0.5)
                 VStack(alignment: .leading, spacing: 0) {
-                    Image("place-marker")
+                    Image("heel-to-toe")
                         .resizable()
                         .scaledToFit()
                         .frame(
@@ -23,28 +23,13 @@ struct SetYourDevice4: View {
                         .clipped()
                         .padding(.horizontal, geo.size.width * 0.05)
                         .padding(.vertical, geo.size.height * 0.025)
-                    BrandHeader(title: "Place your marker", topPadding: 0)
-                    Text("Place your marker on the floor - this is where you'll stand later.")
-                        .font(.callout.weight(.bold))
+                    BrandHeader(title: "Count Your Steps", topPadding: 0)
+                    Text("Starting at your device:")
+                        .font(.callout.weight(.light))
                         .minimumScaleFactor(0.8)
+                        .foregroundColor(Color("GreyText"))
                         .padding(.vertical, geo.size.height * 0.015)
-                    Text("4/4")
-                        .font(.system(size: UIFont.preferredFont(forTextStyle: .subheadline).pointSize * 1.1, weight: .light))
-                        .foregroundColor(Color("BrandBlue"))
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
-                        .background(
-                            RoundedRectangle(cornerRadius: 100)
-                                .fill(Color.white)
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 100)
-                                .stroke(Color("BrandBlue"), lineWidth: 1)
-                        )
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                    
-                    Divider()
-                        .padding(.top, geo.size.height * 0.025)
+
                     Spacer()
                 }
                 .padding(.horizontal, geo.size.width * 0.05)
@@ -52,7 +37,7 @@ struct SetYourDevice4: View {
                     NavigationLink(destination: SetYourDevice3()) {
                         PrimaryButton(title: "Back", inverted: true)
                     }
-                    NavigationLink(destination: SetYourDevice2()) {
+                    NavigationLink(destination: CountYourSteps()) {
                         PrimaryButton(title: "Next")
                     }
                 }
@@ -74,10 +59,10 @@ struct SetYourDevice4: View {
 
 
 // Preview
-struct SetYourDevice4_Preview: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            SetYourDevice4()
-        }
+struct CountYourSteps_Preview: PreviewProvider {
+static var previews: some View {
+    NavigationStack {
+        CountYourSteps()
     }
+}
 }
