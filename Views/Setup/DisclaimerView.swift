@@ -3,26 +3,27 @@
 //  visual-acuity-test
 //
 //  Created by acidgypsycat on 2025-04-22.
-//
+
+
+
 import SwiftUI
 
 struct DisclaimerView: View {
     var body: some View {
-        VStack(spacing: 0) {
-            // Content
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
+        GeometryReader { geo in
+            VStack(spacing: 0) {
+                Spacer(minLength: geo.safeAreaInsets.top)
+
+                VStack(alignment: .leading, spacing: geo.size.height * 0.02) {
                     // Headline
                     Text("Please read and accept before continuing.")
                         .font(.title3.weight(.semibold))
                         .foregroundColor(Color("BrandBlue"))
                         .fixedSize(horizontal: false, vertical: true)
-                        .padding(.top, 16)
 
-                    // Medical Disclaimer section
+                    // Medical Disclaimer
                     Text("Medical Disclaimer")
                         .font(.headline.weight(.semibold))
-                        .padding(.top, 8)
 
                     Text("""
                     This test is a screening tool and not a replacement for a comprehensive eye exam. Please continue regular check-ups with a licensed eye care professional.
@@ -31,10 +32,9 @@ struct DisclaimerView: View {
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
 
-                    // Agreement section
+                    // Agreement
                     Text("Agreement")
                         .font(.headline.weight(.semibold))
-                        .padding(.top, 8)
 
                     (
                         Text("By tapping “I Agree,” you confirm that you accept our ")
@@ -49,41 +49,40 @@ struct DisclaimerView: View {
                     )
                     .font(.body)
                     .fixedSize(horizontal: false, vertical: true)
-                    .foregroundColor(.primary)
                 }
-                .padding(.horizontal, 24)
+                .padding(.horizontal, geo.size.width * 0.05)
+
+                Spacer()
+
+                // “I Agree” button
+                NavigationLink(destination: VisionDetailView(part: .near)) {
+                    PrimaryButton(title: "I Agree")
+                }
+                .padding(.horizontal, geo.size.width * 0.1)
+                .padding(.bottom,
+                         geo.safeAreaInsets.bottom > 0
+                           ? geo.safeAreaInsets.bottom
+                           : geo.size.height * 0.03
+                )
             }
-
-            Spacer()
-
-            // I Agree button
-            NavigationLink("I Agree") {
-                VisionDetailView(part: TestPart.near)
-            }
-
-            .buttonStyle(.plain)
-            .font(.headline)
-            .frame(maxWidth: .infinity)
-            .frame(height: 56)
-            .background(Color("BrandBlue"))
-            .foregroundColor(.white)
-            .cornerRadius(28)
-            .padding(.horizontal, 24)
-            .padding(.bottom, 16)
+            .edgesIgnoringSafeArea(.bottom)
         }
-        // Navigation Bar Styling
+       
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {
-            // Speaker icon
             ToolbarItem(placement: .navigationBarTrailing) {
-                ScreenReader(textToSpeak: "Fill me in")
+                ScreenReader(
+                    textToSpeak:
+                    """
+                    Please read and accept before continuing. Medical Disclaimer: This test is a screening tool and not a replacement for a comprehensive eye exam. Agreement: By tapping I Agree, you confirm that you accept our Terms of Use, Privacy Policy, Service Agreement, and Notice of Privacy Practices.
+                    """
+                )
             }
         }
     }
 }
 
-// Preview
 struct DisclaimerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
@@ -91,4 +90,3 @@ struct DisclaimerView_Previews: PreviewProvider {
         }
     }
 }
-
