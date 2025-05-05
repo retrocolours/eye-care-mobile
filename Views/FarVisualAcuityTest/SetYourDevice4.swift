@@ -1,19 +1,19 @@
 //
-//  SetYourDevice.swift
+//  SetYourDevice4.swift
 //  visual-acuity-test
 //
-//  Created by Ryan Burns on 2025-04-30.
+//  Created by Ryan Burns on 2025-05-05.
 //
 
 import SwiftUI
 
-struct SetYourDevice: View {
+struct SetYourDevice4: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                ProgressBar(fillAmount: 0.5)
+                ProgressBar(fillAmount: 0.8)
                 VStack(alignment: .leading, spacing: 0) {
-                    Image("phone-on-holder")
+                    Image("place-marker")
                         .resizable()
                         .scaledToFit()
                         .frame(
@@ -23,20 +23,12 @@ struct SetYourDevice: View {
                         .clipped()
                         .padding(.horizontal, geo.size.width * 0.05)
                         .padding(.vertical, geo.size.height * 0.025)
-                    BrandHeader(title: "Set Your Device", topPadding: 0)
-                    Text("Now, place your device on a stable surface where you can see the screen clearly.")
+                    BrandHeader(title: "Place your marker", topPadding: 0)
+                    Text("Place your marker on the floor - this is where you'll stand later.")
                         .font(.callout.weight(.bold))
                         .minimumScaleFactor(0.8)
                         .padding(.vertical, geo.size.height * 0.015)
-                    Text("You'll need 8 feet of space in front of it for later testing.")
-                        .font(.callout.weight(.bold))
-                        .minimumScaleFactor(0.8)
-                        .padding(.vertical, geo.size.height * 0.015)
-                    Text("Click Next when ready.")
-                        .font(.callout.weight(.bold))
-                        .minimumScaleFactor(0.8)
-                        .padding(.vertical, geo.size.height * 0.015)
-                    Text("1/4")
+                    Text("4/4")
                         .font(.system(size: UIFont.preferredFont(forTextStyle: .subheadline).pointSize * 1.1, weight: .light))
                         .foregroundColor(Color("BrandBlue"))
                         .padding(.horizontal, 8)
@@ -56,9 +48,10 @@ struct SetYourDevice: View {
                     Spacer()
                 }
                 .padding(.horizontal, geo.size.width * 0.05)
-                HStack(spacing: geo.size.width * 0.025) {
-                    PrimaryButton(title: "Back", inverted: true)
-                        .disabled(true)
+                HStack(spacing: geo.size.width * 0.05) {
+                    NavigationLink(destination: SetYourDevice3()) {
+                        PrimaryButton(title: "Back", inverted: true)
+                    }
                     NavigationLink(destination: SetYourDevice2()) {
                         PrimaryButton(title: "Next")
                     }
@@ -81,10 +74,10 @@ struct SetYourDevice: View {
 
 
 // Preview
-struct SetYourDevice_Preview: PreviewProvider {
+struct SetYourDevice4_Preview: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SetYourDevice()
+            SetYourDevice4()
         }
     }
 }

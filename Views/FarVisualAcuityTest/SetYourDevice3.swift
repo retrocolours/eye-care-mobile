@@ -11,9 +11,9 @@ struct SetYourDevice3: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                ProgressBar(fillAmount: 0.6)
+                ProgressBar(fillAmount: 0.7)
                 VStack(alignment: .leading, spacing: 0) {
-                    Image("phone-on-holder")
+                    Image("person-measuring")
                         .resizable()
                         .scaledToFit()
                         .frame(
@@ -59,10 +59,10 @@ struct SetYourDevice3: View {
                 }
                 .padding(.horizontal, geo.size.width * 0.05)
                 HStack(spacing: geo.size.width * 0.05) {
-                    NavigationLink(destination: SetYourDevice()) {
+                    NavigationLink(destination: SetYourDevice2()) {
                         PrimaryButton(title: "Back", inverted: true)
                     }
-                    NavigationLink(destination: SetYourDevice2()) {
+                    NavigationLink(destination: SetYourDevice4()) {
                         PrimaryButton(title: "8 Feet Measured")
                     }
                 }
