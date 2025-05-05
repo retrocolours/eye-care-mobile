@@ -5,6 +5,7 @@
 //  Created by acidgypsycat on 2025-04-24.
 //
 
+
 import SwiftUI
 
 struct BeforeStartingView: View {
@@ -18,36 +19,37 @@ struct BeforeStartingView: View {
     
     // drives the staggered reveal
     @State private var visibleIndex = 0
-    
+
     var body: some View {
         GeometryReader { geo in
-            VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 0){
                 BrandHeader(
                     title: "Before Starting",
                     topPadding: geo.size.height * 0.015
                 )
                 .padding(.horizontal, geo.size.width * 0.05)
                 
+                // Subtitle
                 Text("For accurate results, you’ll need:")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .padding(.top, geo.size.height * 0.015)
+                    .padding(.bottom, geo.size.height * 0.015)
                     .padding(.horizontal, geo.size.width * 0.05)
                 
+        
+                
+                // Checklist
                 VStack(spacing: 0) {
                     ForEach(titles.indices, id: \.self) { idx in
-                        // each row appears once visibleIndex >= idx+1
                         HStack(alignment: .top, spacing: 12) {
-                            ZStack {
-                                Circle()
-                                    .stroke(Color("BrandBlue"), lineWidth: 1)
-                                    .frame(width: 30, height: 30)
-                                Text("\(idx+1)")
-                                    .font(.headline)
-                                    .foregroundColor(Color("BrandBlue"))
-                            }
+                            Image(systemName: "checkmark.circle.fill")
+                                .font(.title3)
+                                .foregroundColor(Color("BrandBlue"))
+                                .frame(width: 24)
+                            
                             Text(titles[idx])
-                                .font(.body)
+                                .font(.body.weight(.semibold))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
@@ -64,9 +66,10 @@ struct BeforeStartingView: View {
                 
                 Spacer()
                 
+                // Next button
                 if visibleIndex > titles.count {
                     NavigationLink(destination: DeviceSettingsView()) {
-                        PrimaryButton(title: "I’m Ready to Begin")
+                        PrimaryButton(title: "I’m Ready To Begin")
                     }
                     .padding(.horizontal, geo.size.width * 0.1)
                     .padding(.bottom,
@@ -79,9 +82,8 @@ struct BeforeStartingView: View {
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
-            .opacity(visibleIndex > 0 ? 1 : 0) // fade entire screen in
             .onAppear {
-                // stagger each reveal at 1.5s intervals
+                // staggered reveal every 1.5s
                 visibleIndex = 0
                 for i in 1...titles.count + 1 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 1.5) {
@@ -92,12 +94,13 @@ struct BeforeStartingView: View {
                 }
             }
         }
+        // Inline nav-bar & accessibility
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Visual Acuity Test")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 ScreenReader(textToSpeak:
-                    "Before Starting. For accurate results, you’ll need: a room large enough to stand eight feet from your device; good lighting; a quiet environment; your regular glasses or contacts if you wear any; and to speak clearly into the microphone."
+                    "Before Starting. For accurate results, you’ll need: a room large enough to stand eight feet from your device; good lighting; a quiet environment; your regular glasses or contacts if you wear any; and to speak clearly into microphone."
                 )
             }
         }
