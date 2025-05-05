@@ -1,13 +1,13 @@
 //
-//  SetYourDevice2.swift
+//  SetYourDevice3.swift
 //  visual-acuity-test
 //
-//  Created by Ryan Burns on 2025-04-30.
+//  Created by Ryan Burns on 2025-05-05.
 //
 
 import SwiftUI
 
-struct SetYourDevice2: View {
+struct SetYourDevice3: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
@@ -23,12 +23,12 @@ struct SetYourDevice2: View {
                         .clipped()
                         .padding(.horizontal, geo.size.width * 0.05)
                         .padding(.vertical, geo.size.height * 0.025)
-                    BrandHeader(title: "Pick up a small object", topPadding: 0)
-                    Text("Pick up a small object and keep it with you (like a coin or pen). You'll use it later to mark 8 feet on the floor.")
+                    BrandHeader(title: "Measure 8 Feet", topPadding: 0)
+                    Text("Using a mesauring tape or ruler, mark a spot 8 feet (2.4 meters) from your device.")
                         .font(.callout.weight(.bold))
                         .minimumScaleFactor(0.8)
                         .padding(.vertical, geo.size.height * 0.015)
-                    Text("2/4")
+                    Text("3/4")
                         .font(.system(size: UIFont.preferredFont(forTextStyle: .subheadline).pointSize * 1.1, weight: .light))
                         .foregroundColor(Color("BrandBlue"))
                         .padding(.horizontal, 8)
@@ -45,15 +45,25 @@ struct SetYourDevice2: View {
                     
                     Divider()
                         .padding(.top, geo.size.height * 0.025)
+                    Text("Don't have a measuring tape?")
+                        .font(.callout.weight(.bold))
+                        .minimumScaleFactor(0.8)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top, geo.size.height * 0.03)
+                        .padding(.bottom, geo.size.height * 0.015)
+                    NavigationLink(destination: StepCountingShoeSize()) {
+                        PrimaryButton(title: "Use Step Counting", inverted: true)
+                    }
+                    .padding(.horizontal, geo.size.width * 0.05)
                     Spacer()
                 }
                 .padding(.horizontal, geo.size.width * 0.05)
-                HStack(spacing: geo.size.width * 0.025) {
+                HStack(spacing: geo.size.width * 0.05) {
                     NavigationLink(destination: SetYourDevice()) {
                         PrimaryButton(title: "Back", inverted: true)
                     }
-                    NavigationLink(destination: SetYourDevice3()) {
-                        PrimaryButton(title: "Next")
+                    NavigationLink(destination: SetYourDevice2()) {
+                        PrimaryButton(title: "8 Feet Measured")
                     }
                 }
                 .padding(.horizontal, geo.size.width * 0.05)
@@ -74,10 +84,10 @@ struct SetYourDevice2: View {
 
 
 // Preview
-struct SetYourDevice2_Preview: PreviewProvider {
+struct SetYourDevice3_Preview: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SetYourDevice2()
+            SetYourDevice3()
         }
     }
 }

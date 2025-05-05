@@ -26,7 +26,6 @@ struct PrimaryButton: View {
         )
         .opacity(1)
         .accessibilityLabel(title)
-        
 }
 }
 
