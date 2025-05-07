@@ -70,7 +70,7 @@ struct DeviceSettingsView: View {
 
                 // Next button
                 NavigationLink(destination: AllowAccessView()) {
-                    PrimaryButton(title: "I’m Ready to Begin")
+                    PrimaryButton(title: "Next")
                 }
                 .padding(.horizontal, geo.size.width * 0.1)
                 .padding(.bottom,

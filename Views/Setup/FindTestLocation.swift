@@ -67,11 +67,10 @@ struct FindTestLocationView: View {
 
                 Spacer()
 
-                // Next button
-                NavigationLink(destination: Text("Brightness Checking")
-                                .navigationTitle("Visual Acuity Test")) {
-                    PrimaryButton(title: "Start Brightness Checking")
-                }
+                // button
+                NavigationLink(destination: BrightnessCheckView()) {
+                                    PrimaryButton(title: "Start Brightness Checking")
+                                }
                 .padding(.horizontal, geo.size.width * 0.1)
                 .padding(.bottom,
                          geo.safeAreaInsets.bottom > 0

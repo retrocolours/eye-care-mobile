@@ -69,9 +69,9 @@ struct AllowAccessView: View {
 
                 Spacer()
 
-                // “I’m Ready to Begin” button
+                //  button
                 NavigationLink(destination: FindTestLocationView()) {
-                    PrimaryButton(title: "I’m Ready to Begin")
+                    PrimaryButton(title: "Allow Access")
                 }
                 .padding(.horizontal, geo.size.width * 0.1)
                 .padding(.bottom,
