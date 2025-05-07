@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "point-your-phone-camera-toward-the-main-light-sour (10).png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
