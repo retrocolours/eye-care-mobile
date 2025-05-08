@@ -39,7 +39,7 @@ A SwiftUI iOS app that guides users through a simple self-screening vision check
 
 ```bash
 # 1. Clone
-git clone https://github.com/retrocolours/eye-care-mobile.git
+git clone https://github.com/KostaBaramboim/MobileAppiOS.git
 cd visual-acuity-test
 
 # 2. Open in Xcode
