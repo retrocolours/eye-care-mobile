@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		929A477F2DBAAB8E003F2816 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 929A477E2DBAAB8A003F2816 /* .gitignore */; };
+		CDFE80542DCD55DE002321DE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CDFE80532DCD55D6002321DE /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,7 @@
 		CD96DC862DB31C4500EDCE4A /* visual-acuity-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "visual-acuity-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96DC952DB31C4800EDCE4A /* visual-acuity-testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "visual-acuity-testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96DC9F2DB31C4800EDCE4A /* visual-acuity-testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "visual-acuity-testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDFE80532DCD55D6002321DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -111,6 +113,7 @@
 		CD96DC7D2DB31C4500EDCE4A = {
 			isa = PBXGroup;
 			children = (
+				CDFE80532DCD55D6002321DE /* README.md */,
 				929A477E2DBAAB8A003F2816 /* .gitignore */,
 				CD96DC882DB31C4500EDCE4A /* visual-acuity-test */,
 				CD442C022DB74B2E00873A93 /* Views */,
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDFE80542DCD55DE002321DE /* README.md in Resources */,
 				929A477F2DBAAB8E003F2816 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
